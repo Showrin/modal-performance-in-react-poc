@@ -1,0 +1,39 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+  height: 2000px;
+}
+
+.test-modal {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.test-modal--hide {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.test-modal__backdrop {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.test-modal__backdrop--hide {
+  opacity: 0 !important;
+  pointer-events: none;
+}
+
+.test-modal__body {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.test-modal__body form {
+  width: 100%;
+}
+
+.test-modal__body img {
+  width: 10%;
+  border: 1px solid #ffffff;
+}
