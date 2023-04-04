@@ -30,6 +30,8 @@ export default function App() {
         />
       </div>
 
+      <div className="first-case">First Case</div>
+
       <Button onClick={onClickShowModalButton}>Show Modal</Button>
 
       <CustomModal
