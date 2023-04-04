@@ -12,8 +12,8 @@ export default function FirstCaseModalBody2() {
     const url = `https://api.pexels.com/v1/search?query=nature&per_page=500`;
     const response = await axios.get(url, {
       headers: {
-        Authorization: API_KEY
-      }
+        Authorization: API_KEY,
+      },
     });
 
     setPhotos(response.data.photos);
