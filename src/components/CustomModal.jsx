@@ -3,7 +3,7 @@ import { Modal, Button } from "react-bootstrap";
 import classNames from "classnames";
 
 const CustomModal = (props) => {
-  const { shouldShow, handleClose, shouldDestroyOnClose, children } = props;
+  const { shouldShow, handleClose, shouldDestroyOnClose, children, dialogClassName } = props;
   const [shouldOpen, setShouldOpen] = useState(false);
 
   useEffect(() => {
@@ -31,11 +31,12 @@ const CustomModal = (props) => {
   return (
     <Modal
       className={classNames("test-modal", {
-        "test-modal--hide": !shouldShow
+        "test-modal--hide": !shouldShow,
       })}
       backdropClassName={classNames("test-modal__backdrop", {
-        "test-modal__backdrop--hide": !shouldShow
+        "test-modal__backdrop--hide": !shouldShow,
       })}
+      dialogClassName={dialogClassName}
       show={shouldOpen}
       onHide={handleClose}
     >
@@ -51,7 +52,7 @@ const CustomModal = (props) => {
 };
 
 CustomModal.defaultProps = {
-  shouldDestroyOnClose: false
+  shouldDestroyOnClose: false,
 };
 
 export default CustomModal;
