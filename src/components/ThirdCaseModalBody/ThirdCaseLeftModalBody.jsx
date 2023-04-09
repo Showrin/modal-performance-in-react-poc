@@ -2,8 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormControl, FormGroup } from "react-bootstrap";
 
-const API_KEY = "4gxAGT6PNHuKayzNv2WujZ3jQ606ZjRJZaV6eUAoEqadR6bj2cYGeyQR";
-
 export default function FirstCaseModalBody2() {
   const [photos, setPhotos] = useState([]);
   const [demoText, setDemoText] = useState("");
@@ -12,7 +10,7 @@ export default function FirstCaseModalBody2() {
     const url = `https://api.pexels.com/v1/search?query=nature&per_page=500`;
     const response = await axios.get(url, {
       headers: {
-        Authorization: API_KEY,
+        Authorization: process.env.PEXELS_API_KEY,
       },
     });
 
@@ -38,11 +36,7 @@ export default function FirstCaseModalBody2() {
         </FormGroup>
       </form>
       {photos.map((photo) => (
-        <img
-          key={photo.id}
-          src={photo.src.small}
-          alt={photo.alt}
-        />
+        <img key={photo.id} src={photo.src.small} alt={photo.alt} />
       ))}
     </div>
   );
