@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { ControlLabel, FormControl, FormGroup } from "react-bootstrap";
+import { FormControl, FormGroup } from "react-bootstrap";
 
 const API_KEY = "4gxAGT6PNHuKayzNv2WujZ3jQ606ZjRJZaV6eUAoEqadR6bj2cYGeyQR";
 
@@ -38,7 +38,11 @@ export default function FirstCaseModalBody2() {
         </FormGroup>
       </form>
       {photos.map((photo) => (
-        <img key={photo.id} src={photo.src.small} />
+        <img
+          key={photo.id}
+          src={photo.src.small}
+          alt={photo.alt}
+        />
       ))}
     </div>
   );

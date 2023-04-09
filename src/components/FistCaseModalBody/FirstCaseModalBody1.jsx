@@ -74,7 +74,7 @@ export default function FirstCaseModalBody1() {
         </FormGroup>
       </form>
       {photos.map((photo) => (
-        <img key={photo.id} src={photo.src.small} />
+        <img key={photo.id} src={photo.src.small} alt={photo.alt} />
       ))}
 
       {/* Left modal */}
