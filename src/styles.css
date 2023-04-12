@@ -49,9 +49,9 @@
 
 .case-container {
   height: 150px;
-  border: solid;
+  border: 2px solid #474747;
   padding-top: 20px;
-  margin-bottom: 20px;
+  margin: 20px 40px;
 }
 
 .first-case-modal {
