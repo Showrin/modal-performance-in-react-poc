@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Button, FormControl, FormGroup } from "react-bootstrap";
 import CustomModal from "../CustomModal";
 import FirstCaseModalBody1LeftModal from "./FirstCaseModal1LeftModal";
 import FirstCaseModalBody1RightModal from "./FirstCaseModal1RightModal";
-
-const API_KEY = "4gxAGT6PNHuKayzNv2WujZ3jQ606ZjRJZaV6eUAoEqadR6bj2cYGeyQR";
+import { AppContext } from "../../App";
 
 export default function FirstCaseModalBody1() {
+  const { shouldDestroyOnClose } = useContext(AppContext);
   const [photos, setPhotos] = useState([]);
   const [demoText, setDemoText] = useState("");
   const [
@@ -23,7 +23,7 @@ export default function FirstCaseModalBody1() {
     const url = `https://api.pexels.com/v1/search?query=nature&per_page=500`;
     const response = await axios.get(url, {
       headers: {
-        Authorization: API_KEY,
+        Authorization: process.env.REACT_APP_PEXELS_API_KEY,
       },
     });
 
@@ -74,13 +74,14 @@ export default function FirstCaseModalBody1() {
         </FormGroup>
       </form>
       {photos.map((photo) => (
-        <img key={photo.id} src={photo.src.small} />
+        <img key={photo.id} src={photo.src.small} alt={photo.alt} />
       ))}
 
       {/* Left modal */}
       <CustomModal
         shouldShow={shouldShowFirstCaseModal1LeftModal}
         handleClose={handleFirstCaseModal1LeftModalClose}
+        shouldDestroyOnClose={shouldDestroyOnClose}
         dialogClassName="first-case-modal-body-1-left-modal"
       >
         <FirstCaseModalBody1LeftModal />
@@ -90,6 +91,7 @@ export default function FirstCaseModalBody1() {
       <CustomModal
         shouldShow={shouldShowFirstCaseModal1RightModal}
         handleClose={handleFirstCaseModal1RightModalClose}
+        shouldDestroyOnClose={shouldDestroyOnClose}
         dialogClassName="first-case-modal-body-1-right-modal"
       >
         <FirstCaseModalBody1RightModal />
