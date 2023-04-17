@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { FormControl, FormGroup, Button } from "react-bootstrap";
+import React, { useState, Fragment } from "react";
+import { Button } from "react-bootstrap";
 
-import CustomModal from "../../CustomModal";
+import ThirdCaseInnerModal from "./ThirdCaseInnerModal";
 
-const ThirdCaseRightModalInnerButtonSection = (props) => {
-  const { shouldDestroyOnClose } = props;
-  const [photos, setPhotos] = useState([]);
-  const [demoText, setDemoText] = useState("");
+const ThirdCaseRightModalInnerButtonSection = () => {
   const [shouldShowModal, setShouldShowModal] = useState(false);
 
   const onClickShowModal = () => {
@@ -18,57 +14,16 @@ const ThirdCaseRightModalInnerButtonSection = (props) => {
     setShouldShowModal(false);
   };
 
-  const fetchPhotos = async () => {
-    const url = `https://api.pexels.com/v1/search?query=nature&per_page=500`;
-    const response = await axios.get(url, {
-      headers: {
-        Authorization: process.env.REACT_APP_PEXELS_API_KEY,
-      },
-    });
-
-    setPhotos(response.data.photos);
-  };
-
-  const renderModalBody = () => {
-    return (
-      <div className="test-modal__body">
-        <form>
-          <FormGroup controlId="formBasicText">
-            <FormControl
-              type="text"
-              value={demoText}
-              placeholder="Enter text"
-              onChange={(e) => {
-                setDemoText(e.target.value);
-              }}
-            />
-          </FormGroup>
-        </form>
-        {photos.map((photo) => (
-          <img key={photo.id} src={photo.src.small} alt={photo.alt} />
-        ))}
-      </div>
-    );
-  };
-
-  useEffect(() => {
-    fetchPhotos();
-  }, []);
-
   return (
-    <div>
-      <Button onClick={onClickShowModal}>Right Modal</Button>
-
-      <CustomModal
-        className="third-case-right-modal"
-        shouldShow={shouldShowModal}
-        handleClose={handleModalClose}
-        shouldDestroyOnClose={shouldDestroyOnClose}
-        focusable={false}
-      >
-        {renderModalBody()}
-      </CustomModal>
-    </div>
+    <Fragment>
+      <Button onClick={onClickShowModal} style={{ marginBottom: "20px" }}>
+        Right Modal
+      </Button>
+      <ThirdCaseInnerModal
+        shouldShowModal={shouldShowModal}
+        handleModalClose={handleModalClose}
+      />
+    </Fragment>
   );
 };
 

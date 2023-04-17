@@ -92,7 +92,6 @@ export default function App() {
           </div>
         </div>
         {/* Third case */}
-        {/* <ThirdCaseSection /> */}
         <ThirdCaseSection />
 
         <CustomModal

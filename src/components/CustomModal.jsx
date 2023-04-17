@@ -78,6 +78,7 @@ const CustomModal = (props) => {
       backdropClassName={modalBackdropClassName}
       dialogClassName={modalDialogClassName}
       backdrop={!focusable}
+      backdropStyle={{ zIndex }}
       show={shouldOpen}
       onHide={handleClose}
       onEntered={onRenderModal}
