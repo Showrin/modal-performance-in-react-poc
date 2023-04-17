@@ -8,8 +8,7 @@ import "./styles.css";
 import FirstCaseModalBody1 from "./components/FistCaseModalBody/FirstCaseModalBody1";
 import SecondCaseLeftModalBody from "./components/SecondCaseModalBody/SecondCaseLeftModalBody";
 import SecondCaseRightModalBody from "./components/SecondCaseModalBody/SecondCaseRightModalBody";
-import ThirdCaseLeftModalBody from "./components/ThirdCaseModalBody/ThirdCaseLeftModalBody";
-import ThirdCaseRightModalBody from "./components/ThirdCaseModalBody/ThirdCaseRightModalBody";
+import ThirdCaseSection from "./components/sections/thirdCaseSection/ThirdCaseSection";
 
 export const AppContext = createContext();
 
@@ -21,10 +20,6 @@ export default function App() {
   const [shouldShowSecondCaseLeftModal, setShouldShowSecondCaseLeftModal] =
     useState(false);
   const [shouldShowSecondCaseRightModal, setShouldShowSecondCaseRightModal] =
-    useState(false);
-  const [shouldShowThirdCaseLeftModal, setShouldShowThirdCaseLeftModal] =
-    useState(false);
-  const [shouldShowThirdCaseRightModal, setShouldShowThirdCaseRightModal] =
     useState(false);
 
   const onClickShowModalButton = () => {
@@ -62,24 +57,6 @@ export default function App() {
     setShouldShowSecondCaseRightModal(false);
   };
 
-  // Third case left modal
-  const onClickThirdCaseShowLeftModal = () => {
-    setShouldShowThirdCaseLeftModal(true);
-  };
-
-  const handleThirdCaseLeftModalClose = () => {
-    setShouldShowThirdCaseLeftModal(false);
-  };
-
-  // Third case right modal
-  const onClickThirdCaseShowRightModal = () => {
-    setShouldShowThirdCaseRightModal(true);
-  };
-
-  const handleThirdCaseRightModalClose = () => {
-    setShouldShowThirdCaseRightModal(false);
-  };
-
   return (
     <AppContext.Provider value={{ shouldDestroyOnClose }}>
       <div className="App">
@@ -92,19 +69,19 @@ export default function App() {
           />
         </div>
         <div className="case-container">
-          <h3 style={{ marginBottom: "20px" }}>Basic modal (Case 1)</h3>
+          <h3 style={{ marginBottom: "20px" }}>Basic modal (Basic case)</h3>
           <Button onClick={onClickShowModalButton}>Show Modal</Button>
         </div>
         {/* First case */}
         <div className="case-container">
-          <h3 style={{ marginBottom: "20px" }}>Full Page Modal (Case 2)</h3>
+          <h3 style={{ marginBottom: "20px" }}>Full Page Modal (Case 1)</h3>
 
           <Button onClick={onClickFirstCaseShowModal}>Show Modal</Button>
         </div>
         {/* Second case */}
         <div className="case-container">
           <h3 style={{ marginBottom: "20px" }}>
-            Left and Right Modal (Case 3)
+            Left and Right Modal (Case 2)
           </h3>
 
           <div className="second-case">
@@ -115,18 +92,8 @@ export default function App() {
           </div>
         </div>
         {/* Third case */}
-        <div className="case-container">
-          <h3 style={{ marginBottom: "20px" }}>
-            Focusable stacked Modal (Case 4)
-          </h3>
+        <ThirdCaseSection />
 
-          <div className="second-case">
-            <Button onClick={onClickThirdCaseShowLeftModal}>Left Modal</Button>
-            <Button onClick={onClickThirdCaseShowRightModal}>
-              Right Modal
-            </Button>
-          </div>
-        </div>
         <CustomModal
           shouldShow={shouldShowModal}
           handleClose={handleModalClose}
@@ -160,26 +127,6 @@ export default function App() {
           dialogClassName="second-case-right-modal"
         >
           <SecondCaseRightModalBody />
-        </CustomModal>
-        {/* Third case left modal */}
-        <CustomModal
-          className="third-case-left-modal"
-          shouldShow={shouldShowThirdCaseLeftModal}
-          handleClose={handleThirdCaseLeftModalClose}
-          shouldDestroyOnClose={shouldDestroyOnClose}
-          focusable={true}
-        >
-          <ThirdCaseLeftModalBody />
-        </CustomModal>
-        {/* Third case right modal */}
-        <CustomModal
-          className="third-case-right-modal"
-          shouldShow={shouldShowThirdCaseRightModal}
-          handleClose={handleThirdCaseRightModalClose}
-          shouldDestroyOnClose={shouldDestroyOnClose}
-          focusable={true}
-        >
-          <ThirdCaseRightModalBody />
         </CustomModal>
       </div>
     </AppContext.Provider>
