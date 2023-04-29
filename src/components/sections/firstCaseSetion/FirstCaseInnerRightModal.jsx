@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormControl, FormGroup } from "react-bootstrap";
 
-export default function App() {
+export default function FirstCaseInnerRightModal() {
   const [photos, setPhotos] = useState([]);
   const [demoText, setDemoText] = useState("");
 

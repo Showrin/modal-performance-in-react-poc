@@ -2,10 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { FormControl, FormGroup } from "react-bootstrap";
 
-import ThirdCaseInnerModalBody from './ThirdCaseInnerModalBody'
-import CustomModalButton from '../../CustomModalButton';
-
-const ThirdCaseRightModalBody = () => {
+export default function BasicCaseModalBody() {
   const [photos, setPhotos] = useState([]);
   const [demoText, setDemoText] = useState("");
 
@@ -20,26 +17,12 @@ const ThirdCaseRightModalBody = () => {
     setPhotos(response.data.photos);
   };
 
-  const renderInnerModalButton = () => {
-    return (
-      <CustomModalButton
-        buttonText='Inner Mdoal'
-        className="third-case-right-modal"
-        focusable={false} 
-      >
-        <ThirdCaseInnerModalBody />
-      </CustomModalButton>
-    );
-  };
-
   useEffect(() => {
     fetchPhotos();
   }, []);
 
   return (
     <div className="test-modal__body">
-      {renderInnerModalButton()}
-      
       <form>
         <FormGroup controlId="formBasicText">
           <FormControl
@@ -57,6 +40,4 @@ const ThirdCaseRightModalBody = () => {
       ))}
     </div>
   );
-};
-
-export default ThirdCaseRightModalBody;
+}
