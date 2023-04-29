@@ -1,9 +1,7 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { Button, FormControl, FormGroup } from "react-bootstrap";
-import { AppContext } from "../../../App";
+import { FormControl, FormGroup } from "react-bootstrap";
 
-import CustomModal from "../../CustomModal";
 import FirstCaseModalBody1LeftModal from "./FirstCaseInnerLeftModal";
 import FirstCaseModalBody1RightModal from "./FirstCaseInnerRightModal";
 import CustomModalButton from "../../CustomModalButton";

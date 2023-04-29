@@ -7,6 +7,7 @@ import ThirdCaseSection from "./components/sections/thirdCaseSection/ThirdCaseSe
 
 import "./styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import BasicCaseSection from "./components/sections/basicCaseSection/basicCaseSection";
 
 export const AppContext = createContext();
 
@@ -35,6 +36,7 @@ export default function App() {
         {renderHeading()}
         {renderDestroyCheckBox()}
 
+        <BasicCaseSection />
         <FirstCaseSection />
         <SecondCaseSection />
         <ThirdCaseSection />
